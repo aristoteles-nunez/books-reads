@@ -1,14 +1,14 @@
 import React from 'react';
 import './App.css';
-import Button from '@material-ui/core/Button';
+import AppNavBar from './AppNavBar';
+
 
 function App() {
   return (
     <div className="App">
+      <AppNavBar />
       <p> Hello World</p>
-      <Button variant="contained" color="primary">
-        Hello World
-      </Button>
+      
     </div>
   );
 }
