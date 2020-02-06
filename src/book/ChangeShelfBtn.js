@@ -54,6 +54,11 @@ const ChangeShelfBtn = (props) => {
     const handleClose = () => {
         setAnchorEl(null);
     };
+
+    const handleClickOnItem = (item) => {
+        console.log(`clicked on: ${item}`);
+    };
+
     return (
         <div>
             <Button size="small" color="primary" onClick={handleClick}>
@@ -68,19 +73,19 @@ const ChangeShelfBtn = (props) => {
                 open={Boolean(anchorEl)}
                 onClose={handleClose}
             >
-                <StyledMenuItem selected={selectedShelf === 'currentlyReading'}>
+                <StyledMenuItem selected={selectedShelf === 'currentlyReading'} onClick={() => handleClickOnItem('currentlyReading')}>
                     <ListItemIcon>
                         <VisibilityIcon fontSize="small"/>
                     </ListItemIcon>
                     <ListItemText primary="Currently reading" />
                 </StyledMenuItem>
-                <StyledMenuItem selected={selectedShelf === 'read'}>
+                <StyledMenuItem selected={selectedShelf === 'read'} onClick={() => handleClickOnItem('read')}>
                     <ListItemIcon>
                         <LocalLibraryIcon fontSize="small" />
                     </ListItemIcon>
                     <ListItemText primary="Read" />
                 </StyledMenuItem>
-                <StyledMenuItem selected={selectedShelf === 'wantToRead'}>
+                <StyledMenuItem selected={selectedShelf === 'wantToRead'} onClick={() => handleClickOnItem('wantToRead')}>
                     <ListItemIcon>
                         <WatchLaterIcon fontSize="small" />
                     </ListItemIcon>
