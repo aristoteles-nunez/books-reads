@@ -3,16 +3,14 @@ import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
-import Tooltip from '@material-ui/core/Tooltip';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
-import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
-import SwapHorizIcon from '@material-ui/icons/SwapHoriz';
 import Box from '@material-ui/core/Box';
 import ShelfIcon from './ShelfIcon';
 import BookDetail from './BookDetail';
+import ChangeShelfBtn from './ChangeShelfBtn';
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -24,9 +22,6 @@ const useStyles = makeStyles(theme => ({
     },
     media: {
         height: 250,
-    },
-    moveBtn: {
-        marginLeft: 'auto'
     }
 }));
 
@@ -66,17 +61,11 @@ const BookCard = (props) => {
                                     {book.title}
                                 </Box>
                             </div>
-                        
-                            
                         </CardContent>
                     </CardActionArea>
                     <CardActions disableSpacing>
                         <ShelfIcon shelf={book.shelf}/>
-                        <Button size="small" color="primary" className={classes.moveBtn}>
-                            <Tooltip title="Move to another shelf">
-                                <SwapHorizIcon />
-                            </Tooltip>
-                        </Button>
+                        <ChangeShelfBtn selectedShelf={book.shelf}/>
                     </CardActions>
                 </Card>
             </Paper>
