@@ -11,6 +11,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import VisibilityIcon from '@material-ui/icons/Visibility';
 import LocalLibraryIcon from '@material-ui/icons/LocalLibrary';
 import WatchLaterIcon from '@material-ui/icons/WatchLater';
+import MenuBookIcon from '@material-ui/icons/MenuBook';
 
 const StyledMenu = withStyles({
     paper: {
@@ -90,6 +91,12 @@ const ChangeShelfBtn = (props) => {
                         <WatchLaterIcon fontSize="small" />
                     </ListItemIcon>
                     <ListItemText primary="Want to read" />
+                </StyledMenuItem>
+                <StyledMenuItem selected={selectedShelf === null} onClick={() => handleClickOnItem('none')}>
+                    <ListItemIcon>
+                        <MenuBookIcon fontSize="small" />
+                    </ListItemIcon>
+                    <ListItemText primary="None" />
                 </StyledMenuItem>
             </StyledMenu>
         </div>
