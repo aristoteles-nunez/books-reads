@@ -48,7 +48,6 @@ const useStyles = makeStyles(theme => ({
 
 const BookCategories = (props) => {
     const {books} = props;
-    const booksFiltered = books;
     const classes = useStyles();
     const [value, setValue] = React.useState(0);
 
@@ -66,16 +65,16 @@ const BookCategories = (props) => {
                 </Tabs>
             </AppBar>
             <TabPanel value={value} index={0}>
-                Item One
+                <BookList books={books} filter="currentlyReading"/>
             </TabPanel>
             <TabPanel value={value} index={1}>
-                Item Two
+                <BookList books={books} filter="wantToRead"/>
             </TabPanel>
             <TabPanel value={value} index={2}>
-                Item Three
+                <BookList books={books} filter="read"/>
             </TabPanel>
             <TabPanel value={value} index={3}>
-                <BookList books={booksFiltered}/>
+                <BookList books={books}/>
             </TabPanel>
 
         </div>
