@@ -66,7 +66,7 @@ const BookCategories = (props) => {
                 </Tabs>
             </AppBar>
             <TabPanel value={value} index={0}>
-                <BookList books={booksFiltered}/>
+                Item One
             </TabPanel>
             <TabPanel value={value} index={1}>
                 Item Two
@@ -75,7 +75,7 @@ const BookCategories = (props) => {
                 Item Three
             </TabPanel>
             <TabPanel value={value} index={3}>
-                Item Four
+                <BookList books={booksFiltered}/>
             </TabPanel>
 
         </div>

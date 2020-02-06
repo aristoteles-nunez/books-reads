@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
-import CardHeader from '@material-ui/core/CardHeader';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import Tooltip from '@material-ui/core/Tooltip';
 import CardActions from '@material-ui/core/CardActions';
@@ -11,20 +10,20 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
 import SwapHorizIcon from '@material-ui/icons/SwapHoriz';
-import BookTitle from './BookTitle'
-import AuthorList from './AuthorList';
+import Box from '@material-ui/core/Box';
 import ShelfIcon from './ShelfIcon';
 import BookDetail from './BookDetail';
 
 const useStyles = makeStyles(theme => ({
     root: {
-        maxWidth: 220
+        width: 220
     },
     title: {
-        fontSize: 16,
+        fontSize: 14,
+        fontWeight: 'bold'
     },
     media: {
-        height: 180,
+        height: 250,
     },
     moveBtn: {
         marginLeft: 'auto'
@@ -49,23 +48,30 @@ const BookCard = (props) => {
             <Paper elevation={4} className={classes.root}>
                 <Card >
                     <CardActionArea onClick={handleBookDetailOpen}>
-                        <CardHeader 
-                            title={ 
-                                <BookTitle className={classes.title} title={book.title}/>
-                            }
-                        />
                         <CardMedia
                             className={classes.media}
                             image={book.imageLinks.thumbnail}
                             title={book.title}
                         />
                         <CardContent>
-                            <AuthorList authors={book.authors} />
+                            <div style={{ whiteSpace: 'nowrap' }}>
+                                <Box
+                                    component="div"
+                                    my={2}
+                                    textOverflow="ellipsis"
+                                    overflow="hidden"
+                                    bgcolor="background.paper"
+                                    className={classes.title}
+                                >
+                                    {book.title}
+                                </Box>
+                            </div>
+                        
+                            
                         </CardContent>
                     </CardActionArea>
                     <CardActions disableSpacing>
                         <ShelfIcon shelf={book.shelf}/>
-                        
                         <Button size="small" color="primary" className={classes.moveBtn}>
                             <Tooltip title="Move to another shelf">
                                 <SwapHorizIcon />

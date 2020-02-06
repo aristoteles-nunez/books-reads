@@ -16,9 +16,13 @@ const BookList = (props) => {
     return (
         <div>
             <Grid container justify="center" className={classes.root} spacing={2}>
-                <Grid item >
-                    <BookCard book={books[0].book}/>
-                </Grid>
+                {
+                    books.map((book)=>(
+                        <Grid key={book.title} item >
+                            <BookCard book={book}/>
+                        </Grid>
+                    ))
+                }
             </Grid>
         </div>
     );

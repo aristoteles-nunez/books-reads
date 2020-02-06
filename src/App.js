@@ -6,7 +6,7 @@ import { ThemeProvider } from '@material-ui/core/styles';
 import { blue, amber } from '@material-ui/core/colors';
 import BookCategories from './book/BookCategories';
 // import BookCard from './book/BookCard';
-import data from './input/data.json';
+import data from './input/data2.json';
 
 
 const theme = createMuiTheme({
