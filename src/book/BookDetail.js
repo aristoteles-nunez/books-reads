@@ -37,13 +37,9 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const BookDetail = (props) => {
-    const {book} = props;
+    const {book, open, handleBookDetailClose} = props;
     const classes = useStyles();
-    const [open, setOpen] = React.useState(true);
-
-    const handleClose = () => {
-        setOpen(false);
-    };
+    
     return (
         <div>
             <Modal
@@ -51,7 +47,7 @@ const BookDetail = (props) => {
                 aria-describedby="transition-modal-description"
                 className={classes.modal}
                 open={open}
-                onClose={handleClose}
+                onClose={handleBookDetailClose}
                 closeAfterTransition
                 BackdropComponent={Backdrop}
                 BackdropProps={{
@@ -101,7 +97,9 @@ const BookDetail = (props) => {
 } 
 
 BookDetail.propTypes = {
-    book: PropTypes.object.isRequired
+    book: PropTypes.object.isRequired,
+    open: PropTypes.bool.isRequired,
+    handleBookDetailClose: PropTypes.func.isRequired
 }
 
 export default BookDetail;

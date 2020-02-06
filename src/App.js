@@ -6,7 +6,7 @@ import { ThemeProvider } from '@material-ui/core/styles';
 import { blue, amber } from '@material-ui/core/colors';
 import BookCard from './book/BookCard';
 import data from './input/data.json';
-import BookDetail from './book/BookDetail';
+
 
 const theme = createMuiTheme({
   palette: {
@@ -20,8 +20,8 @@ function App() {
     <ThemeProvider theme={theme}>
       <div className="App">
         <AppNavBar title={'My Reads'}/>
-        {/* <BookCard book={data.book}/> */}
-        <BookDetail book={data.book}/>
+        <BookCard book={data.book}/>
+        
       </div>
     </ThemeProvider>
   );

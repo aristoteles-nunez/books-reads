@@ -14,6 +14,7 @@ import SwapHorizIcon from '@material-ui/icons/SwapHoriz';
 import BookTitle from './BookTitle'
 import AuthorList from './AuthorList';
 import ShelfIcon from './ShelfIcon';
+import BookDetail from './BookDetail';
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -33,36 +34,48 @@ const useStyles = makeStyles(theme => ({
 const BookCard = (props) => {
     const {book} = props;
     const classes = useStyles();
+    const [open, setOpen] = React.useState(false);
+
+    const handleBookDetailOpen = () => {
+        setOpen(true);
+      };
+
+    const handleBookDetailClose = () => {
+        setOpen(false);
+    };
     
     return (
-        <Paper elevation={4} className={classes.root}>
-            <Card >
-                <CardActionArea>
-                    <CardHeader 
-                        title={ 
-                            <BookTitle className={classes.title} title={book.title}/>
-                        }
-                    />
-                    <CardMedia
-                        className={classes.media}
-                        image={book.imageLinks.thumbnail}
-                        title={book.title}
-                    />
-                    <CardContent>
-                        <AuthorList authors={book.authors} />
-                    </CardContent>
-                </CardActionArea>
-                <CardActions disableSpacing>
-                    <ShelfIcon shelf={book.shelf}/>
-                    
-                    <Button size="small" color="primary" className={classes.moveBtn}>
-                        <Tooltip title="Move to another shelf">
-                            <SwapHorizIcon />
-                        </Tooltip>
-                    </Button>
-                </CardActions>
-            </Card>
-        </Paper>
+        <div>
+            <Paper elevation={4} className={classes.root}>
+                <Card >
+                    <CardActionArea onClick={handleBookDetailOpen}>
+                        <CardHeader 
+                            title={ 
+                                <BookTitle className={classes.title} title={book.title}/>
+                            }
+                        />
+                        <CardMedia
+                            className={classes.media}
+                            image={book.imageLinks.thumbnail}
+                            title={book.title}
+                        />
+                        <CardContent>
+                            <AuthorList authors={book.authors} />
+                        </CardContent>
+                    </CardActionArea>
+                    <CardActions disableSpacing>
+                        <ShelfIcon shelf={book.shelf}/>
+                        
+                        <Button size="small" color="primary" className={classes.moveBtn}>
+                            <Tooltip title="Move to another shelf">
+                                <SwapHorizIcon />
+                            </Tooltip>
+                        </Button>
+                    </CardActions>
+                </Card>
+            </Paper>
+            <BookDetail book={book} open={open} handleBookDetailClose={handleBookDetailClose} />
+        </div>
     );
 
 }
