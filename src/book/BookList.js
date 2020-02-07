@@ -18,7 +18,7 @@ const filterBooks = (books, filter) => {
 }
 
 const BookList = (props) => {
-    const {books, filter} = props;
+    const {books, filter, handleShelfChange} = props;
     const booksFiltered = filterBooks(books, filter);
     // console.log(`booksFiltered: ${JSON.stringify(booksFiltered)}`);
     const classes = useStyles();
@@ -28,7 +28,7 @@ const BookList = (props) => {
                 {
                     booksFiltered.map((book)=>(
                         <Grid key={book.title} item >
-                            <BookCard book={book}/>
+                            <BookCard book={book} handleShelfChange={handleShelfChange}/>
                         </Grid>
                     ))
                 }
@@ -39,7 +39,8 @@ const BookList = (props) => {
 
 BookList.propTypes = {
     books: PropTypes.array.isRequired,
-    filter: PropTypes.string
+    filter: PropTypes.string,
+    handleShelfChange: PropTypes.func.isRequired
 }
 
 export default BookList;

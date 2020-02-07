@@ -47,7 +47,7 @@ const useStyles = makeStyles(theme => ({
 
 
 const BookCategories = (props) => {
-    const {books} = props;
+    const {books, handleShelfChange} = props;
     const classes = useStyles();
     const [value, setValue] = React.useState(0);
 
@@ -65,21 +65,26 @@ const BookCategories = (props) => {
                 </Tabs>
             </AppBar>
             <TabPanel value={value} index={0}>
-                <BookList books={books} filter="currentlyReading"/>
+                <BookList books={books} filter="currentlyReading" handleShelfChange={handleShelfChange}/>
             </TabPanel>
             <TabPanel value={value} index={1}>
-                <BookList books={books} filter="wantToRead"/>
+                <BookList books={books} filter="wantToRead" handleShelfChange={handleShelfChange}/>
             </TabPanel>
             <TabPanel value={value} index={2}>
-                <BookList books={books} filter="read"/>
+                <BookList books={books} filter="read" handleShelfChange={handleShelfChange}/>
             </TabPanel>
             <TabPanel value={value} index={3}>
-                <BookList books={books}/>
+                <BookList books={books} handleShelfChange={handleShelfChange}/>
             </TabPanel>
 
         </div>
     );
     
+}
+
+BookCategories.propTypes = {
+    books: PropTypes.array.isRequired,
+    handleShelfChange: PropTypes.func.isRequired
 }
 
 export default BookCategories;

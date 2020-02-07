@@ -45,7 +45,8 @@ const StyledMenuItem = withStyles(theme => ({
 }))(MenuItem);
 
 const ChangeShelfBtn = (props) => {
-    const {selectedShelf} = props;
+    const {selectedShelf, handleShelfChange, bookId} = props;
+    console.log(`bookId received: ${bookId}`);
     const [anchorEl, setAnchorEl] = React.useState(null);
 
     const handleClick = event => {
@@ -56,8 +57,9 @@ const ChangeShelfBtn = (props) => {
         setAnchorEl(null);
     };
 
-    const handleClickOnItem = (item) => {
-        console.log(`clicked on: ${item}`);
+    const handleClickOnItem = (bookId, item) => {
+        console.log(`clicked on: ${bookId} ${item}`);
+        handleShelfChange(bookId, item);
     };
 
     return (
@@ -74,25 +76,25 @@ const ChangeShelfBtn = (props) => {
                 open={Boolean(anchorEl)}
                 onClose={handleClose}
             >
-                <StyledMenuItem selected={selectedShelf === 'currentlyReading'} onClick={() => handleClickOnItem('currentlyReading')}>
+                <StyledMenuItem selected={selectedShelf === 'currentlyReading'} onClick={() => handleClickOnItem(bookId, 'currentlyReading')}>
                     <ListItemIcon>
                         <VisibilityIcon fontSize="small"/>
                     </ListItemIcon>
                     <ListItemText primary="Currently reading" />
                 </StyledMenuItem>
-                <StyledMenuItem selected={selectedShelf === 'read'} onClick={() => handleClickOnItem('read')}>
+                <StyledMenuItem selected={selectedShelf === 'read'} onClick={() => handleClickOnItem(bookId, 'read')}>
                     <ListItemIcon>
                         <LocalLibraryIcon fontSize="small" />
                     </ListItemIcon>
                     <ListItemText primary="Read" />
                 </StyledMenuItem>
-                <StyledMenuItem selected={selectedShelf === 'wantToRead'} onClick={() => handleClickOnItem('wantToRead')}>
+                <StyledMenuItem selected={selectedShelf === 'wantToRead'} onClick={() => handleClickOnItem(bookId, 'wantToRead')}>
                     <ListItemIcon>
                         <WatchLaterIcon fontSize="small" />
                     </ListItemIcon>
                     <ListItemText primary="Want to read" />
                 </StyledMenuItem>
-                <StyledMenuItem selected={selectedShelf === null} onClick={() => handleClickOnItem('none')}>
+                <StyledMenuItem selected={selectedShelf === null} onClick={() => handleClickOnItem(bookId, 'none')}>
                     <ListItemIcon>
                         <MenuBookIcon fontSize="small" />
                     </ListItemIcon>
@@ -104,7 +106,9 @@ const ChangeShelfBtn = (props) => {
 }
 
 ChangeShelfBtn.propTypes = {
-    selectedShelf: PropTypes.string.isRequired
+    selectedShelf: PropTypes.string.isRequired,
+    handleShelfChange: PropTypes.func.isRequired,
+    bookId: PropTypes.string.isRequired
 }
 
 export default ChangeShelfBtn;

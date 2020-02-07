@@ -26,7 +26,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const BookCard = (props) => {
-    const {book} = props;
+    const {book, handleShelfChange} = props;
     const classes = useStyles();
     const [open, setOpen] = React.useState(false);
 
@@ -65,7 +65,7 @@ const BookCard = (props) => {
                     </CardActionArea>
                     <CardActions disableSpacing>
                         <ShelfIcon shelf={book.shelf}/>
-                        <ChangeShelfBtn selectedShelf={book.shelf}/>
+                        <ChangeShelfBtn selectedShelf={book.shelf} handleShelfChange={handleShelfChange} bookId={book.id}/>
                     </CardActions>
                 </Card>
             </Paper>
@@ -76,7 +76,8 @@ const BookCard = (props) => {
 }
 
 BookCard.propTypes = {
-    book: PropTypes.object.isRequired
+    book: PropTypes.object.isRequired,
+    handleShelfChange: PropTypes.func.isRequired
 }
 
 export default BookCard;
