@@ -19,7 +19,7 @@ const BookList = (props) => {
             <Grid container justify="center" className={classes.root} spacing={2}>
                 {
                     books.map((book)=>(
-                        <Grid key={book.title} item >
+                        <Grid key={book.id} item >
                             <BookCard book={book} handleShelfChange={handleShelfChange}/>
                         </Grid>
                     ))

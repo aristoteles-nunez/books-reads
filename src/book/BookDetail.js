@@ -71,10 +71,15 @@ const BookDetail = (props) => {
                                         {book.description}
                                     </Box>
                                 </Grid>
-                                <Grid item xs={12}>
-                                    <div className={classes.authors} align="center">{book.authors.length > 1? 'Authors': 'Author'}</div>
-                                    <AuthorList authors={book.authors}/>
-                                </Grid>
+                                {
+                                    Array.isArray(book.authors)  && (
+                                        <Grid item xs={12}>
+                                            <div className={classes.authors} align="center">{book.authors.length > 1? 'Authors': 'Author'}</div>
+                                            <AuthorList authors={book.authors}/>
+                                        </Grid>
+                                    )
+                                }
+                                
                                 <Grid item xs={6}>
                                     <ul>
                                         <li>Publisher: {book.publisher}</li>

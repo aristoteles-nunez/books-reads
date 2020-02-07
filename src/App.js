@@ -4,6 +4,7 @@ import { createMuiTheme } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/core/styles';
 import { blue, amber } from '@material-ui/core/colors';
 import SearchForNewBooks from './book/SearchForNewBooks';
+import debounce from 'lodash/debounce';
 import { Route } from 'react-router-dom';
 import DisplayShelfs from './DisplayShelfs';
 import * as BooksAPI from './utils/BooksAPI';
@@ -24,15 +25,21 @@ class App extends Component {
     books: {},
     currentlyReading: [],
     wantToRead: [],
-    read: []
+    read: [],
+    searchedBooks: []
+  }
+  constructor(){
+    super();
+    this.handleSearchBooksDebounced = debounce(this.emitSearch, 350);
   }
 
   componentDidMount() {
-    console.log('Display shelfs loaded..');
+    console.log('App loaded..');
     this.handleBooksRequest();
   }
 
   handleBooksRequest = () => {
+    console.log('Getting the books from the library...');
     BooksAPI.getAll().then(booksArray => {
       const newBooks = {};
       const booksCurrentlyReading = [];
@@ -78,6 +85,32 @@ class App extends Component {
       });
     });
   }
+
+  handleSearchBooks = (query) => {
+    this.handleSearchBooksDebounced(query);
+  }
+  handleSearchBooksDebounced = (query) => {
+    this.emitSearch(query);
+  }
+  emitSearch = (query) => {
+    console.log(`Searching bor books with query: ${query}`);
+    BooksAPI.search(query).then((response)=>{
+      console.log(`response: ${JSON.stringify(response)}`);
+      const booksResult = [];
+      if(response.error) {
+        console.log('Empty results');
+      } else {
+        for(const book of response){
+          book.shelf = this.state.books[book.id]? this.state.books[book.id].shelf: 'none';
+          booksResult.push(book);
+        }
+        this.setState(()=>({
+          searchedBooks: booksResult
+        }));
+      }
+    });
+  }
+
   render() {
     return (
       <ThemeProvider theme={theme}>
@@ -91,7 +124,13 @@ class App extends Component {
               read={this.state.read}
             /> 
           )}/>
-          <Route exact path='/addBook' component={SearchForNewBooks} />
+          <Route exact path='/addBook' render={()=>(
+              <SearchForNewBooks 
+                handleSearchBooks={this.handleSearchBooks} 
+                searchedBooks={this.state.searchedBooks}
+                handleShelfChange={this.handleShelfChange}
+              />
+            )} />
         </div>
       </ThemeProvider>
     );

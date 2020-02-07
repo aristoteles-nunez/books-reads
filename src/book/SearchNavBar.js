@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { fade, makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -54,12 +55,16 @@ const useStyles = makeStyles(theme => ({
 }));
   
 
-const SearchNavBar = () => {
+const SearchNavBar = (props) => {
+    const {handleSearchBooks} = props;
     const classes = useStyles();
     const [query, setQuery] = React.useState('');
+
     const handleChange = event => {
         setQuery(event.target.value);
+        handleSearchBooks(event.target.value);
     };
+
     return (
         <div className={classes.root}>
             <AppBar position="static">
@@ -89,11 +94,14 @@ const SearchNavBar = () => {
                             inputProps={{ 'aria-label': 'search' }}
                         />
                     </div>
-                    <p>{query}</p>
                 </Toolbar>
             </AppBar>
         </div>
     );
+}
+
+SearchNavBar.propTypes = {
+    handleSearchBooks: PropTypes.func.isRequired
 }
 
 export default SearchNavBar;
