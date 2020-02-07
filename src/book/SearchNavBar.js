@@ -6,6 +6,7 @@ import InputBase from '@material-ui/core/InputBase';
 import SearchIcon from '@material-ui/icons/Search';
 import IconButton from '@material-ui/core/IconButton';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
+import {Link} from 'react-router-dom';
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -13,6 +14,7 @@ const useStyles = makeStyles(theme => ({
     },
     menuButton: {
         marginRight: theme.spacing(2),
+        color: '#FFFF'
     },
     search: {
         position: 'relative',
@@ -58,14 +60,15 @@ const SearchNavBar = () => {
         <div className={classes.root}>
             <AppBar position="static">
                 <Toolbar>
+                    <Link to='/'>
                         <IconButton
                             edge="start"
                             className={classes.menuButton}
-                            color="inherit"
                             aria-label="open drawer"
                         >
                             <ArrowBackIcon />
                         </IconButton>
+                    </Link>
                     <div className={classes.search}>
                         <div className={classes.searchIcon}>
                             <SearchIcon />

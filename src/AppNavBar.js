@@ -6,6 +6,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
+import {Link} from 'react-router-dom';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -41,9 +42,11 @@ const AppNavBar = (props) => {
                     <Typography variant="h6" className={classes.title}>
                         {title}
                     </Typography>
-                    <Fab color="secondary" aria-label="add" className={classes.margin}>
-                      <AddIcon />
-                    </Fab>
+                    <Link to='/addBook'>
+                      <Fab size="small" color="secondary" aria-label="add" className={classes.margin}>
+                        <AddIcon />
+                      </Fab>
+                    </Link>
                 </Toolbar>
             </AppBar>
         </div>
