@@ -64,7 +64,9 @@ const BookDetail = (props) => {
                                     </div>
                                 </Grid>
                                 <Grid item xs={4}>
-                                    <img className={classes.image} alt={book.title} src={book.imageLinks.thumbnail}/>
+                                    <img className={classes.image} alt={book.title} src={
+                                        book.imageLinks && book.imageLinks.thumbnail ? book.imageLinks.thumbnail: './images/imageNotFound.jpg'
+                                        }/>
                                 </Grid>
                                 <Grid item xs={8}>
                                     <Box component="div" className={classes.description} overflow="auto">

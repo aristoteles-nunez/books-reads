@@ -104,10 +104,10 @@ class App extends Component {
           book.shelf = this.state.books[book.id]? this.state.books[book.id].shelf: 'none';
           booksResult.push(book);
         }
-        this.setState(()=>({
-          searchedBooks: booksResult
-        }));
       }
+      this.setState(()=>({
+        searchedBooks: booksResult
+      }));
     });
   }
 

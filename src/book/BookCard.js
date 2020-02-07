@@ -45,7 +45,9 @@ const BookCard = (props) => {
                     <CardActionArea onClick={handleBookDetailOpen}>
                         <CardMedia
                             className={classes.media}
-                            image={book.imageLinks.thumbnail}
+                            image={
+                                book.imageLinks && book.imageLinks.thumbnail ? book.imageLinks.thumbnail: './images/imageNotFound.jpg'
+                            }
                             title={book.title}
                         />
                         <CardContent>

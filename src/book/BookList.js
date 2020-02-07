@@ -8,6 +8,10 @@ const useStyles = makeStyles(theme => ({
     root: {
       flexGrow: 1,
     },
+    mainContainer: {
+        flexGrow: 1,
+        padding: theme.spacing(2),
+    }
   }));
 
 
@@ -15,7 +19,7 @@ const BookList = (props) => {
     const {books, handleShelfChange} = props;
     const classes = useStyles();
     return (
-        <div>
+        <div className={classes.mainContainer}>
             <Grid container justify="center" className={classes.root} spacing={2}>
                 {
                     books.map((book)=>(
