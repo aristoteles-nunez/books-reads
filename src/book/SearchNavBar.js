@@ -56,6 +56,10 @@ const useStyles = makeStyles(theme => ({
 
 const SearchNavBar = () => {
     const classes = useStyles();
+    const [query, setQuery] = React.useState('');
+    const handleChange = event => {
+        setQuery(event.target.value);
+    };
     return (
         <div className={classes.root}>
             <AppBar position="static">
@@ -75,6 +79,9 @@ const SearchNavBar = () => {
                         </div>
                         <InputBase
                             placeholder="Search books…"
+                            onChange={handleChange}
+                            value={query}
+                            autoFocus={true}
                             classes={{
                                 root: classes.inputRoot,
                                 input: classes.inputInput,
@@ -82,6 +89,7 @@ const SearchNavBar = () => {
                             inputProps={{ 'aria-label': 'search' }}
                         />
                     </div>
+                    <p>{query}</p>
                 </Toolbar>
             </AppBar>
         </div>
