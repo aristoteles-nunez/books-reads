@@ -93,7 +93,7 @@ const ChangeShelfBtn = (props) => {
                     </ListItemIcon>
                     <ListItemText primary="Want to read" />
                 </StyledMenuItem>
-                <StyledMenuItem selected={selectedShelf === null} onClick={() => handleClickOnItem(book, 'none')}>
+                <StyledMenuItem selected={selectedShelf === 'none'} onClick={() => handleClickOnItem(book, 'none')}>
                     <ListItemIcon>
                         <MenuBookIcon fontSize="small" />
                     </ListItemIcon>

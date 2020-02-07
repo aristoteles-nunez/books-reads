@@ -94,21 +94,28 @@ class App extends Component {
   }
   emitSearch = (query) => {
     console.log(`Searching bor books with query: ${query}`);
-    BooksAPI.search(query).then((response)=>{
-      console.log(`response: ${JSON.stringify(response)}`);
-      const booksResult = [];
-      if(response.error) {
-        console.log('Empty results');
-      } else {
-        for(const book of response){
-          book.shelf = this.state.books[book.id]? this.state.books[book.id].shelf: 'none';
-          booksResult.push(book);
+    if(query && query !== '') {
+      BooksAPI.search(query).then((response)=>{
+        console.log(`response: ${JSON.stringify(response)}`);
+        const booksResult = [];
+        if(response.error) {
+          console.log('Empty results');
+        } else {
+          for(const book of response){
+            book.shelf = this.state.books[book.id]? this.state.books[book.id].shelf: 'none';
+            booksResult.push(book);
+          }
         }
-      }
+        this.setState(()=>({
+          searchedBooks: booksResult
+        }));
+      });
+    }else {
       this.setState(()=>({
-        searchedBooks: booksResult
+        searchedBooks: []
       }));
-    });
+    }
+    
   }
 
   render() {

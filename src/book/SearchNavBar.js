@@ -61,9 +61,13 @@ const SearchNavBar = (props) => {
     const [query, setQuery] = React.useState('');
 
     const handleChange = event => {
-        setQuery(event.target.value);
-        handleSearchBooks(event.target.value);
+        handleTextOfSearchBox(event.target.value)
     };
+
+    const handleTextOfSearchBox = (text) => {
+        setQuery(text);
+        handleSearchBooks(text);
+    }
 
     return (
         <div className={classes.root}>
@@ -74,6 +78,7 @@ const SearchNavBar = (props) => {
                             edge="start"
                             className={classes.menuButton}
                             aria-label="open drawer"
+                            onClick={()=>handleTextOfSearchBox('')}
                         >
                             <ArrowBackIcon />
                         </IconButton>
