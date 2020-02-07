@@ -96,7 +96,7 @@ class App extends Component {
     console.log(`Searching bor books with query: ${query}`);
     if(query && query !== '') {
       BooksAPI.search(query).then((response)=>{
-        console.log(`response: ${JSON.stringify(response)}`);
+        //console.log(`response: ${JSON.stringify(response)}`);
         const booksResult = [];
         if(response.error) {
           console.log('Empty results');
