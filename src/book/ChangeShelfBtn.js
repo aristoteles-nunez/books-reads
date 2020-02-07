@@ -46,7 +46,6 @@ const StyledMenuItem = withStyles(theme => ({
 
 const ChangeShelfBtn = (props) => {
     const {selectedShelf, handleShelfChange, book} = props;
-    console.log(`bookId received: ${book.id}`);
     const [anchorEl, setAnchorEl] = React.useState(null);
 
     const handleClick = event => {
@@ -58,7 +57,6 @@ const ChangeShelfBtn = (props) => {
     };
 
     const handleClickOnItem = (book, item) => {
-        console.log(`clicked on: ${book.id} ${item}`);
         handleClose();
         handleShelfChange(book, item);
     };

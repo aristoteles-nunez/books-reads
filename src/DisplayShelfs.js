@@ -50,7 +50,8 @@ class DisplayShelfs extends Component {
     handleShelfChange = (book, shelf) => {
         console.log(`updating shelf with bookId:${book.id} shelf:${shelf}`);
         BooksAPI.update(book, shelf).then((response)=>{
-            console.log(`response from updating: ${JSON.stringify(response)}`);
+            // console.log(`response from updating: ${JSON.stringify(response)}`);
+            book.shelf = shelf;
             this.setState(()=>(response));
             this.setState((prevState)=> {
                 const updatedBooks = prevState.books;

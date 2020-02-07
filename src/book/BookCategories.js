@@ -72,13 +72,13 @@ const BookCategories = (props) => {
                 </Tabs>
             </AppBar>
             <TabPanel value={value} index={0}>
-                <BookList books={booksCurrentlyReading} filter="currentlyReading" handleShelfChange={handleShelfChange}/>
+                <BookList books={booksCurrentlyReading} handleShelfChange={handleShelfChange}/>
             </TabPanel>
             <TabPanel value={value} index={1}>
-                <BookList books={booksWantToRead} filter="wantToRead" handleShelfChange={handleShelfChange}/>
+                <BookList books={booksWantToRead}  handleShelfChange={handleShelfChange}/>
             </TabPanel>
             <TabPanel value={value} index={2}>
-                <BookList books={booksRead} filter="read" handleShelfChange={handleShelfChange}/>
+                <BookList books={booksRead} handleShelfChange={handleShelfChange}/>
             </TabPanel>
             <TabPanel value={value} index={3}>
                 <BookList books={[...booksCurrentlyReading,...booksWantToRead, ...booksRead]} handleShelfChange={handleShelfChange}/>

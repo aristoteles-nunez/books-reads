@@ -10,17 +10,9 @@ const useStyles = makeStyles(theme => ({
     },
   }));
 
-// const filterBooks = (books, filter) => {
-//     if(filter) {
-//         return books.filter((book) => book.shelf === filter);
-//     }
-//     return books;
-// }
 
 const BookList = (props) => {
-    const {books, filter, handleShelfChange} = props;
-    // const booksFiltered = filterBooks(books, filter);
-    // console.log(`booksFiltered: ${JSON.stringify(booksFiltered)}`);
+    const {books, handleShelfChange} = props;
     const classes = useStyles();
     return (
         <div>
@@ -39,7 +31,6 @@ const BookList = (props) => {
 
 BookList.propTypes = {
     books: PropTypes.array.isRequired,
-    filter: PropTypes.string,
     handleShelfChange: PropTypes.func.isRequired
 }
 
