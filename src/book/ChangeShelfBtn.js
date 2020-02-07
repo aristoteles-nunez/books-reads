@@ -13,6 +13,10 @@ import LocalLibraryIcon from '@material-ui/icons/LocalLibrary';
 import WatchLaterIcon from '@material-ui/icons/WatchLater';
 import MenuBookIcon from '@material-ui/icons/MenuBook';
 
+/**
+ * Styles used for material-ui to render the components
+ * correctly
+ */
 const StyledMenu = withStyles({
     paper: {
         border: '1px solid #d3d4d5',
@@ -33,6 +37,9 @@ const StyledMenu = withStyles({
     />
 ));
 
+/**
+ * This component renders a menu but with styles
+ */
 const StyledMenuItem = withStyles(theme => ({
     root: {
         '&:focus': {
@@ -44,8 +51,19 @@ const StyledMenuItem = withStyles(theme => ({
     },
 }))(MenuItem);
 
+/**
+ * @description Thus component renders the floating menu that 
+ * enables to each book to change the current shelf
+ * The function handleShelfChange manages the state in the main level
+ * @param {*} props 
+ */
 const ChangeShelfBtn = (props) => {
     const {selectedShelf, handleShelfChange, book} = props;
+
+    /**
+     * This code is to hide and show the menu, the code is 
+     * imported from `material-ui` examples
+     */
     const [anchorEl, setAnchorEl] = React.useState(null);
 
     const handleClick = event => {
@@ -56,6 +74,12 @@ const ChangeShelfBtn = (props) => {
         setAnchorEl(null);
     };
 
+    /**
+     * This is the function that actually changes the book
+     * to another shelf
+     * @param {*} book The current book
+     * @param {*} item The destination shelf
+     */
     const handleClickOnItem = (book, item) => {
         handleClose();
         handleShelfChange(book, item);

@@ -3,6 +3,10 @@ import PropTypes from 'prop-types';
 import SearchNavBar from './SearchNavBar';
 import BookList from './BookList';
 
+/**
+ * Main component that renders the search panel and the result of the search
+ * @param {*} props 
+ */
 const SearchForNewBooks = (props) => {
     const {handleSearchBooks, searchedBooks, handleShelfChange} = props;
     return (

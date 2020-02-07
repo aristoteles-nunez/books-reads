@@ -9,6 +9,10 @@ import Box from '@material-ui/core/Box';
 import BookTitle from './BookTitle';
 import AuthorList from './AuthorList';
 
+/**
+ * Styles used for material-ui to render the components
+ * correctly
+ */
 const useStyles = makeStyles(theme => ({
     content: {
         flexGrow: 1,
@@ -36,6 +40,11 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
+/**
+ * @description This component renders the details of one book
+ * but this is rendered in modal mode
+ * @param {*} props 
+ */
 const BookDetail = (props) => {
     const {book, open, handleBookDetailClose} = props;
     const classes = useStyles();

@@ -8,6 +8,10 @@ import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
 import {Link} from 'react-router-dom';
 
+/**
+ * Styles used for material-ui to render the components
+ * correctly
+ */
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
@@ -32,6 +36,10 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
+/**
+ * The `AppNavBar` component render the title and the search button
+ * @param {*} props The title is required
+ */
 const AppNavBar = (props) => {
     const {title} = props;
     const classes = useStyles();
@@ -52,6 +60,7 @@ const AppNavBar = (props) => {
         </div>
     );    
 };
+
 AppNavBar.propTypes = {
   title: PropTypes.string.isRequired
 }

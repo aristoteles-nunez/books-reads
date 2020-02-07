@@ -26,12 +26,23 @@ In the search page it is possible to find more books to add to the library.
 * You can write any text related to some book
 * When you wirte the calls to the search method are debounced to avoid make a lot of calls.
 
-# Server Endoint
+# Server Endpoint
 
 This app make calls to a server endpoint from [Udacity's React Nanodegree](https://www.udacity.com/course/react-nanodegree--nd019), the enpoint in question is: https://reactnd-books-api.udacity.com 
 
 All the calls to that endpoint are made with an `Authorization` header that is a random value stored on local storage, basically to identify the user.
 
+## Sample data
+
+To know how the data of the server is, there are some samples in the `src/input` folder.
+
+# Requirements
+
+The main software used:
+
+* `NodeJS`. Version `v13.7.0`. Used to create the app using `create-react-app` and to serve the app in local.
+* `React`. Version `16.12.0`. All the web app is made with react,
+* `Material-UI`. Version `4.9.1`. All the UI elements where made with material-ui.
 
 # Install
 

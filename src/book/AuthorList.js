@@ -3,6 +3,10 @@ import PropTypes from 'prop-types';
 import Author from './Author';
 import { makeStyles } from '@material-ui/core/styles';
 
+/**
+ * Styles used for material-ui to render the components
+ * correctly
+ */
 const useStyles = makeStyles(theme => ({
     root: {
         display: 'flex',
@@ -14,6 +18,10 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
+/**
+ * Renders the list of authors, each author inside a `Chip` component
+ * @param {*} props 
+ */
 const AuthorList = (props) => {
     const {authors} = props;
     const classes = useStyles();

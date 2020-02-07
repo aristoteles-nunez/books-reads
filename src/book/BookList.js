@@ -4,6 +4,10 @@ import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import BookCard from './BookCard';
 
+/**
+ * Styles used for material-ui to render the components
+ * correctly
+ */
 const useStyles = makeStyles(theme => ({
     root: {
       flexGrow: 1,
@@ -15,6 +19,10 @@ const useStyles = makeStyles(theme => ({
   }));
 
 
+/**
+ * @description Renders the list of books
+ * @param {*} props 
+ */
 const BookList = (props) => {
     const {books, handleShelfChange} = props;
     const classes = useStyles();

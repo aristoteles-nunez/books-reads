@@ -3,7 +3,10 @@ import PropTypes from 'prop-types';
 import AppNavBar from './AppNavBar';
 import BookCategories from './book/BookCategories';
 
-
+/**
+ * Component that displays the title and the books in each shelf
+ * @param {*} props 
+ */
 const DisplayShelfs = (props) => {
     const {books, handleShelfChange, currentlyReading, wantToRead, read} = props;
     return (

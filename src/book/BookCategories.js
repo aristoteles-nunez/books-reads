@@ -8,6 +8,12 @@ import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import BookList from './BookList';
 
+/**
+ * This code was created for the `material-ui` library
+ * I just imported this to be able to use the same 
+ * functionality as in the web examples of material-ui
+ * @param {*} props 
+ */
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
 
@@ -31,6 +37,12 @@ TabPanel.propTypes = {
     value: PropTypes.any.isRequired,
 };
 
+/**
+ * This code was created for the `material-ui` library
+ * I just imported this to be able to use the same 
+ * functionality as in the web examples of material-ui
+ * @param {*} index 
+ */
 function a11yProps(index) {
     return {
         id: `simple-tab-${index}`,
@@ -38,6 +50,10 @@ function a11yProps(index) {
     };
 }
 
+/**
+ * Styles used for material-ui to render the components
+ * correctly
+ */
 const useStyles = makeStyles(theme => ({
     root: {
         flexGrow: 1,
@@ -45,11 +61,23 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
+/**
+ * @description Funtion that matches and array of indexes and 
+ * return and array of books relative to that indexes
+ * @param {*} arrayIndex Array with book's ids
+ * @param {*} booksObj The main dictionary to map the elements
+ */
 const arrayIndexToArrayObjects = (arrayIndex, booksObj) => {
     const result = arrayIndex.map((element) => booksObj[element]);
     return result;
 }
 
+/**
+ * @description Component that renders the main tabs
+ * in each tab an array of books is passed
+ * Each array is previously processed accordingly to the arrays of ids
+ * @param {*} props 
+ */
 const BookCategories = (props) => {
     const {books, handleShelfChange, currentlyReading, wantToRead, read} = props;
     const booksCurrentlyReading = arrayIndexToArrayObjects(currentlyReading, books);

@@ -9,6 +9,10 @@ import LocalLibraryIcon from '@material-ui/icons/LocalLibrary';
 import MenuBookIcon from '@material-ui/icons/MenuBook';
 import WatchLaterIcon from '@material-ui/icons/WatchLater';
 
+/**
+ * Styles used for material-ui to render the components
+ * correctly
+ */
 const useStyles = makeStyles(theme => ({
     green: {
         color: green[500],
@@ -36,6 +40,10 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
+/**
+ * Returns the correct icon based on the shelfId
+ * @param {*} shelf The shelfId
+ */
 const mapIconFromShelf = (shelf) => {
     if(shelf === 'currentlyReading') return <VisibilityIcon />
     if(shelf === 'read') return <LocalLibraryIcon />
@@ -43,12 +51,22 @@ const mapIconFromShelf = (shelf) => {
     return <MenuBookIcon />
 }
 
+/**
+ * Returns the text that is human readable from 
+ * the shelfId
+ * @param {*} shelf 
+ */
 const mapTextrFromShelf = (shelf) => {
     if(shelf === 'currentlyReading') return 'Currently reading';
     if(shelf === 'read') return 'Read';
     if(shelf === 'wantToRead') return 'Want to Read';
     return 'Not in personal library';
 }
+
+/**
+ * The icon's color is different for each shelf
+ * @param {*} shelf 
+ */
 const colorFromShelf = (shelf) => {
     if(shelf === 'currentlyReading') return 'blue';
     if(shelf === 'read') return 'green';
@@ -56,6 +74,10 @@ const colorFromShelf = (shelf) => {
     return 'red';
 }
 
+/**
+ * Renders the correct icon based on the shelf 
+ * @param {*} props 
+ */
 const ShelfIcon = (props) => {
     const {shelf} = props;
     const classes = useStyles();

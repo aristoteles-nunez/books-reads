@@ -9,6 +9,10 @@ import IconButton from '@material-ui/core/IconButton';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import {Link} from 'react-router-dom';
 
+/**
+ * Styles used for material-ui to render the components
+ * correctly
+ */
 const useStyles = makeStyles(theme => ({
     root: {
         flexGrow: 1
@@ -55,15 +59,30 @@ const useStyles = makeStyles(theme => ({
 }));
   
 
+/**
+ * @description This component renders the search input
+ * inside the nav bar and handle the text as is changed
+ * The handler that actually makes the request is handleSearchBooks
+ * @param {*} props 
+ */
 const SearchNavBar = (props) => {
     const {handleSearchBooks} = props;
     const classes = useStyles();
+
+    /**
+     * This code was imported from `material-ui` examples
+     * to show the text in the search input
+     */
     const [query, setQuery] = React.useState('');
 
     const handleChange = event => {
         handleTextOfSearchBox(event.target.value)
     };
 
+    /**
+     * This is the function that makes the request to the server
+     * @param {*} text 
+     */
     const handleTextOfSearchBox = (text) => {
         setQuery(text);
         handleSearchBooks(text);

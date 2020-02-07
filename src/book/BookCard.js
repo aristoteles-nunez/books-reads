@@ -12,6 +12,10 @@ import ShelfIcon from './ShelfIcon';
 import BookDetail from './BookDetail';
 import ChangeShelfBtn from './ChangeShelfBtn';
 
+/**
+ * Styles used for material-ui to render the components
+ * correctly
+ */
 const useStyles = makeStyles(theme => ({
     root: {
         width: 220
@@ -25,9 +29,19 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
+/**
+ * The `BookCard` render the book presentation, and provided the 
+ * click capability to expose the detail of each book in modal mode
+ * @param {*} props 
+ */
 const BookCard = (props) => {
     const {book, handleShelfChange} = props;
     const classes = useStyles();
+
+    /**
+     * The states for modal mode are used as described in the
+     * `material-ui` documentation, and ii is handle to this level
+     */
     const [open, setOpen] = React.useState(false);
 
     const handleBookDetailOpen = () => {
