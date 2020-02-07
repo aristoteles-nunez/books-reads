@@ -45,9 +45,16 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
+const arrayIndexToArrayObjects = (arrayIndex, booksObj) => {
+    const result = arrayIndex.map((element) => booksObj[element]);
+    return result;
+}
 
 const BookCategories = (props) => {
-    const {books, handleShelfChange} = props;
+    const {books, handleShelfChange, currentlyReading, wantToRead, read} = props;
+    const booksCurrentlyReading = arrayIndexToArrayObjects(currentlyReading, books);
+    const booksWantToRead = arrayIndexToArrayObjects(wantToRead, books);
+    const booksRead = arrayIndexToArrayObjects(read, books);
     const classes = useStyles();
     const [value, setValue] = React.useState(0);
 
@@ -65,16 +72,16 @@ const BookCategories = (props) => {
                 </Tabs>
             </AppBar>
             <TabPanel value={value} index={0}>
-                <BookList books={books} filter="currentlyReading" handleShelfChange={handleShelfChange}/>
+                <BookList books={booksCurrentlyReading} filter="currentlyReading" handleShelfChange={handleShelfChange}/>
             </TabPanel>
             <TabPanel value={value} index={1}>
-                <BookList books={books} filter="wantToRead" handleShelfChange={handleShelfChange}/>
+                <BookList books={booksWantToRead} filter="wantToRead" handleShelfChange={handleShelfChange}/>
             </TabPanel>
             <TabPanel value={value} index={2}>
-                <BookList books={books} filter="read" handleShelfChange={handleShelfChange}/>
+                <BookList books={booksRead} filter="read" handleShelfChange={handleShelfChange}/>
             </TabPanel>
             <TabPanel value={value} index={3}>
-                <BookList books={books} handleShelfChange={handleShelfChange}/>
+                <BookList books={[...booksCurrentlyReading,...booksWantToRead, ...booksRead]} handleShelfChange={handleShelfChange}/>
             </TabPanel>
 
         </div>
@@ -83,8 +90,11 @@ const BookCategories = (props) => {
 }
 
 BookCategories.propTypes = {
-    books: PropTypes.array.isRequired,
-    handleShelfChange: PropTypes.func.isRequired
+    books: PropTypes.object.isRequired,
+    handleShelfChange: PropTypes.func.isRequired,
+    currentlyReading: PropTypes.array.isRequired, 
+    wantToRead: PropTypes.array.isRequired, 
+    read: PropTypes.array.isRequired
 }
 
 export default BookCategories;

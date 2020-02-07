@@ -65,7 +65,7 @@ const BookCard = (props) => {
                     </CardActionArea>
                     <CardActions disableSpacing>
                         <ShelfIcon shelf={book.shelf}/>
-                        <ChangeShelfBtn selectedShelf={book.shelf} handleShelfChange={handleShelfChange} bookId={book.id}/>
+                        <ChangeShelfBtn selectedShelf={book.shelf} handleShelfChange={handleShelfChange} book={book}/>
                     </CardActions>
                 </Card>
             </Paper>

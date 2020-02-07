@@ -10,23 +10,23 @@ const useStyles = makeStyles(theme => ({
     },
   }));
 
-const filterBooks = (books, filter) => {
-    if(filter) {
-        return books.filter((book) => book.shelf === filter);
-    }
-    return books;
-}
+// const filterBooks = (books, filter) => {
+//     if(filter) {
+//         return books.filter((book) => book.shelf === filter);
+//     }
+//     return books;
+// }
 
 const BookList = (props) => {
     const {books, filter, handleShelfChange} = props;
-    const booksFiltered = filterBooks(books, filter);
+    // const booksFiltered = filterBooks(books, filter);
     // console.log(`booksFiltered: ${JSON.stringify(booksFiltered)}`);
     const classes = useStyles();
     return (
         <div>
             <Grid container justify="center" className={classes.root} spacing={2}>
                 {
-                    booksFiltered.map((book)=>(
+                    books.map((book)=>(
                         <Grid key={book.title} item >
                             <BookCard book={book} handleShelfChange={handleShelfChange}/>
                         </Grid>
